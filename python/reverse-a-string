@@ -1,13 +1,19 @@
 def reverse(s):
-    str = ""
-    for i in s:
-        str = i + str
-    return str
+    # Using a loop to reverse the string
+    reversed_str = ""
+    for char in s:
+        reversed_str = char + reversed_str
+    return reversed_str
 
+# Original string
 s = "DeeptiGautam"
 
-print("The original string is : ", end="")
-print(s)
+# Print original string
+print("The original string is:", s)
 
-print("The reversed string After using loops is : ", end="")
-print(reverse(s))
+# Print reversed string using the loop method
+print("The reversed string after using loops is:", reverse(s))
+
+# Alternative method: reversing using slicing
+reversed_slicing = s[::-1]
+print("The reversed string using slicing is:", reversed_slicing)
