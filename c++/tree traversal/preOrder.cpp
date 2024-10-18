@@ -8,6 +8,7 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 };
 
+// Function for pre-order traversal
 void preOrderTraversal(TreeNode* root) {
     if (root == nullptr) {
         return;
@@ -23,6 +24,20 @@ void preOrderTraversal(TreeNode* root) {
     preOrderTraversal(root->right);
 }
 
+// Function to delete the tree and free memory
+void deleteTree(TreeNode* root) {
+    if (root == nullptr) {
+        return;
+    }
+
+    // Delete left and right subtrees
+    deleteTree(root->left);
+    deleteTree(root->right);
+
+    // Delete the current node
+    delete root;
+}
+
 int main() {
     // Create a sample binary tree
     TreeNode* root = new TreeNode(1);
@@ -36,7 +51,9 @@ int main() {
     preOrderTraversal(root);
     std::cout << std::endl;
 
-    // Clean up memory (not shown in the code)
+    // Clean up memory
+    deleteTree(root);
+    std::cout << "Tree deleted successfully." << std::endl;
 
     return 0;
 }
