@@ -1,42 +1,51 @@
+//modified this code
 #include <iostream>
-//time complexityy if O(log n)
 using namespace std;
-int binarysearch(int arr[] , int size , int key){
-    int start =0;
-    int end=size-1;
-    int mid=(start+end)/2;
-    //also;
-    //mid== start + (end-start)/2
-    while(start<=end){
-        if(arr[mid]==key){
-            return mid;
-        }
-        //right bala part par jayo 
-        if(key>arr[mid]){
-            //right part
-            start=mid+1;
-        }
-        //left bale part par jayo
-        else if(key<arr[mid]){
-            end=mid-1;
-        }
-        //mid ka value bhi update kar do
-        mid=(start+end)/2;
-    }
-    // if key is not present in the array the we return -1
-    
-    return -1;
-}
-int main()
-{
-    int even[]={2,4,6,8,12,18};
-    int odd[]={3,8,11,14,16};
-    
-    int index1=binarysearch(even , 6,12);
-    cout<<"index of the key in the array is  ="<<index1<<endl;
-    
-    int index2=binarysearch(odd , 5,10);
-    cout<<"index of the key in the array is  ="<<index2<<endl;
 
+int binarySearch(int arr[], int size, int key) {
+    int start = 0;
+    int end = size - 1;
+    
+    while (start <= end) {
+        int mid = start + (end - start) / 2; // Updated mid calculation
+
+        if (arr[mid] == key) {
+            return mid; // Key found
+        }
+        if (key > arr[mid]) {
+            start = mid + 1; // Search in the right half
+        } else {
+            end = mid - 1; // Search in the left half
+        }
+    }
+    
+    return -1; // Key not found
+}
+
+int main() {
+    int size;
+    cout << "Enter the size of the sorted array: ";
+    cin >> size;
+
+    int* arr = new int[size]; // Dynamically allocate array
+
+    cout << "Enter " << size << " sorted elements:\n";
+    for (int i = 0; i < size; ++i) {
+        cin >> arr[i];
+    }
+
+    int key;
+    cout << "Enter the key to search for: ";
+    cin >> key;
+
+    int index = binarySearch(arr, size, key);
+
+    if (index != -1) {
+        cout << "Index of the key in the array is: " << index << endl;
+    } else {
+        cout << "Key not found in the array." << endl;
+    }
+
+    delete[] arr; // Clean up dynamically allocated memory
     return 0;
 }
