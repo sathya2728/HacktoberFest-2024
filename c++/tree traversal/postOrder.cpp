@@ -1,6 +1,5 @@
 #include <iostream>
 
-// Definition for a binary tree node
 struct TreeNode {
     int val;
     TreeNode* left;
@@ -8,6 +7,7 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 };
 
+// Function for post-order traversal
 void postOrderTraversal(TreeNode* root) {
     if (root == nullptr) {
         return;
@@ -23,6 +23,20 @@ void postOrderTraversal(TreeNode* root) {
     std::cout << root->val << " ";
 }
 
+// Function to delete the tree and free memory
+void deleteTree(TreeNode* root) {
+    if (root == nullptr) {
+        return;
+    }
+    
+    // Delete left and right subtrees
+    deleteTree(root->left);
+    deleteTree(root->right);
+    
+    // Delete the current node
+    delete root;
+}
+
 int main() {
     // Create a sample binary tree
     TreeNode* root = new TreeNode(1);
@@ -34,4 +48,11 @@ int main() {
     // Perform post-order traversal
     std::cout << "Post-Order Traversal: ";
     postOrderTraversal(root);
-    std::
+    std::cout << std::endl;
+
+    // Clean up memory
+    deleteTree(root);
+    std::cout << "Tree deleted successfully." << std::endl;
+
+    return 0;
+}
