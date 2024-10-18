@@ -46,20 +46,25 @@ public class Stack<T> {
         return stack.toString();
     }
 
+    // Main method for testing the Stack implementation
     public static void main(String[] args) {
         Stack<Integer> stack = new Stack<>();
 
+        // Push elements onto the stack
         stack.push(1);
         stack.push(2);
         stack.push(3);
 
+        // Display the stack and its size
         System.out.println("Stack: " + stack);
         System.out.println("Size: " + stack.size());
 
+        // Pop an element and display the stack and its size
         System.out.println("Pop: " + stack.pop());
-        System.out.println("Stack: " + stack);
-        System.out.println("Size: " + stack.size());
+        System.out.println("Stack after pop: " + stack);
+        System.out.println("Size after pop: " + stack.size());
 
+        // Peek at the top element of the stack
         System.out.println("Peek: " + stack.peek());
     }
 }
