@@ -21,7 +21,7 @@ int main(void) {
         scanf(" %c", &choice); // space before %c to consume any newline character
     } while (choice == 'y' || choice == 'Y');
 
-    printf("Thank you for using the program!\n");
+    printf("process successful\n");
     return 0; // end of main
 }
 
